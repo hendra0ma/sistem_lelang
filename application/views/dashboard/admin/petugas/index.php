@@ -1,7 +1,7 @@
 <div class="content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
                 <div class="card">
 
                     <div class="card-body">
@@ -13,34 +13,37 @@
                                 </button>
                             </div>
                         <?php endif; ?>
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">no</th>
-                                    <th scope="col">Nama Petugas</th>
-                                    <th scope="col">email</th>
-                                    <th scope="col">username</th>
-                                    <th scope="col">action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <?php
-                                $i = 1;
-                                foreach ($petugas as $data) : ?>
-
+                        <div class="table-responsive">
+                            <table class="table table_datatable">
+                                <thead class="thead-dark">
                                     <tr>
-                                        <th scope="row"><?= $i++ ?></th>
-                                        <td><?= $data->nama_petugas ?></td>
-                                        <td><?= $data->email ?></td>
-                                        <td><?= $data->username ?></td>
-                                        <td>
-                                            <a href="<?= base_url() ?>dashboard/admin/petugas/delete/<?= $data->id_petugas ?>" class="badge badge-danger" onclick="return window.confirm('yakin?')">Delete</a>
-                                        </td>
+                                        <th scope="col">no</th>
+                                        <th scope="col">Nama Petugas</th>
+                                        <th scope="col">email</th>
+                                        <th scope="col">username</th>
+                                        <th scope="col">action</th>
                                     </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+
+                                    <?php
+                                    $i = 1;
+                                    foreach ($petugas as $data) : ?>
+
+                                        <tr>
+                                            <th scope="row"><?= $i++ ?></th>
+                                            <td><?= $data->nama_petugas ?></td>
+                                            <td><?= $data->email ?></td>
+                                            <td><?= $data->username ?></td>
+                                            <td>
+                                                <a href="<?= base_url() ?>dashboard/admin/petugas/delete/<?= $data->id_petugas ?>" class="badge badge-danger" onclick="return window.confirm('yakin?')">Delete</a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+
+                        </div>
 
 
 

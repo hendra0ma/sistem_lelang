@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="<?= base_url('public/assets/dashboard') ?>/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('public/assets/dashboard') ?>/dist/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.23/r-2.2.7/datatables.min.css" />
+
+
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -85,7 +88,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="<?= base_url('dashboard/admin/home') ?>" class="brand-link">
                 <img src="<?= base_url('public/assets/dashboard') ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><b>ADMIN</b></span>
             </a>
@@ -107,31 +110,40 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-header">MENU</li>
+                        <li class="nav-header">Menu Utama</li>
                         <li class="nav-item">
-                            <a href="pages/calendar.html" class="nav-link">
-                                <i class="nav-icon fas fa-calendar-alt"></i>
-                                <p>
-                                    Calendar
-                                </p>
-                            </a>
+                            <?php if ($this->uri->segment(3) == 'home' && $this->uri->segment(4) == '') : ?>
+                                <a href="<?= base_url() ?>dashboard/admin/home" class="nav-link active">
+                                <?php else : ?>
+                                    <a href="<?= base_url() ?>dashboard/admin/home" class="nav-link">
+                                    <?php endif; ?>
+                                    <i class="nav-icon fas fa-calendar-alt"></i>
+                                    <p>
+                                        Home
+                                    </p>
+                                    </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/gallery.html" class="nav-link">
-                                <i class="nav-icon far fa-image"></i>
-                                <p>
-                                    Gallery
-                                </p>
-                            </a>
+                            <?php if ($this->uri->segment(4) == 'listBarang') : ?>
+                                <a href="<?= base_url() ?>dashboard/admin/home/listBarang" class="nav-link active">
+                                <?php else : ?>
+                                    <a href="<?= base_url() ?>dashboard/admin/home/listBarang" class="nav-link">
+                                    <?php endif; ?>
+                                    <i class="nav-icon far fa-image"></i>
+                                    <p>
+                                        Pendataan Barang
+                                    </p>
+                                    </a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/kanban.html" class="nav-link">
                                 <i class="nav-icon fas fa-columns"></i>
                                 <p>
-                                    Kanban Board
+                                    Generate laporan
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-header">Menu</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-users-cog"></i>
@@ -143,16 +155,24 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?= base_url() ?>dashboard/admin/petugas/" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>List Petugas</p>
-                                    </a>
+                                    <?php if ($this->uri->segment(3) == 'petugas' && $this->uri->segment(4) == '') : ?>
+                                        <a href="<?= base_url() ?>dashboard/admin/petugas/" class="nav-link active">
+                                        <?php else : ?>
+                                            <a href="<?= base_url() ?>dashboard/admin/petugas/" class="nav-link">
+                                            <?php endif ?>
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>List Petugas</p>
+                                            </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= base_url() ?>dashboard/admin/petugas/register" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Register Petugas</p>
-                                    </a>
+                                    <?php if ($this->uri->segment(4) == 'register') : ?>
+                                        <a href="<?= base_url() ?>dashboard/admin/petugas/register/" class="nav-link active">
+                                        <?php else : ?>
+                                            <a href="<?= base_url() ?>dashboard/admin/petugas/register/" class="nav-link">
+                                            <?php endif ?>
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Register Petugas</p>
+                                            </a>
                                 </li>
 
                             </ul>

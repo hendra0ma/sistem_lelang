@@ -23,4 +23,10 @@ class Petugas_model extends CI_Model
         $this->db->where('id_petugas', $id);
         $this->db->delete('tb_petugas');
     }
+    public function getCount()
+    {
+        $this->db->select('id_petugas');
+        $query = $this->db->get('tb_petugas')->result_array();
+        return count($query);
+    }
 }

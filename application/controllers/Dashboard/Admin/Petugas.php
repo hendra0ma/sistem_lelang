@@ -23,6 +23,9 @@ class Petugas extends CI_Controller
         $this->load->view('dashboard/admin/petugas/index', $data);
         $this->load->view('dashboard/templates/admin/footer');
     }
+
+
+
     public function register()
     {
 
