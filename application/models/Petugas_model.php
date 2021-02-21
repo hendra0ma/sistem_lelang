@@ -10,4 +10,17 @@ class Petugas_model extends CI_Model
         $query = $this->db->get();
         return $query->row();
     }
+    public function register($data)
+    {
+        $this->db->insert('tb_petugas', $data);
+    }
+    public function get()
+    {
+        return $this->db->get('tb_petugas')->result();
+    }
+    public function delete($id)
+    {
+        $this->db->where('id_petugas', $id);
+        $this->db->delete('tb_petugas');
+    }
 }

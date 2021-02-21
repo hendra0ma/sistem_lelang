@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard 2</title>
+    <title><?= $title ?></title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -57,7 +57,7 @@
 
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="<?= base_url() ?>/auth/auth/logout" class="dropdown-item">
+                        <a href="<?= base_url() ?>auth/auth/logout" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
 
@@ -87,7 +87,7 @@
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
                 <img src="<?= base_url('public/assets/dashboard') ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <span class="brand-text font-weight-light"><b>ADMIN</b></span>
             </a>
 
             <!-- Sidebar -->
@@ -98,7 +98,7 @@
                         <img src="<?= base_url('public/assets/dashboard') ?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block"><?= $_SESSION['username'] ?></a>
                     </div>
                 </div>
 
@@ -107,13 +107,12 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-header">EXAMPLES</li>
+                        <li class="nav-header">MENU</li>
                         <li class="nav-item">
                             <a href="pages/calendar.html" class="nav-link">
                                 <i class="nav-icon fas fa-calendar-alt"></i>
                                 <p>
                                     Calendar
-                                    <span class="badge badge-info right">2</span>
                                 </p>
                             </a>
                         </li>
@@ -133,7 +132,31 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-users-cog"></i>
+                                <p>
+                                    Atur Petugas
+                                    <i class="fas fa-angle-left right"></i>
 
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>dashboard/admin/petugas/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Petugas</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= base_url() ?>dashboard/admin/petugas/register" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Register Petugas</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

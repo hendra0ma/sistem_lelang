@@ -18,8 +18,8 @@ class Home extends CI_Controller
     public function index()
     {
 
-        $this->load->view('dashboard/templates/masyarakat/header');
+        $this->load->view('dashboard/templates/petugas/header');
         $this->load->view('dashboard/petugas/index');
-        $this->load->view('dashboard/templates/masyarakat/footer');
+        $this->load->view('dashboard/templates/petugas/footer');
     }
 }

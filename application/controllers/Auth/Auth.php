@@ -4,7 +4,6 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('form_validation');
     }
 
     public function login()
@@ -136,7 +135,7 @@ class Auth extends CI_Controller
                 'Email',
                 'required|valid_email|is_unique[tb_masyarakat.email]',
                 [
-                    'required' => 'username wajib di isi',
+                    'required' => 'email wajib di isi',
                     'valid_email' => 'email yang anda masukan harus valid',
                     'is_unique' => 'email yang anda masukan sudah ada',
                 ]
@@ -147,7 +146,10 @@ class Auth extends CI_Controller
                 'username',
                 'Username',
                 'required|is_unique[tb_masyarakat.username]',
-                ['is_unique' => "username yang anda masukan sudah ada"]
+                [
+                    'required' => 'email wajib di isi',
+                    'is_unique' => "username yang anda masukan sudah ada"
+                ]
             );
             $this->form_validation->set_rules('password', 'Password', 'required');
             $this->form_validation->set_rules(

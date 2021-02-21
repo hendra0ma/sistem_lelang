@@ -65,10 +65,10 @@
                     </div> -->
 
                 <div class="container-login100-form-btn">
-                    <button type="submit" class="login100-form-btn">
+                    <a href="<?= base_url() ?>auth/auth/login" class="login100-form-btn mr-2">Kembali</a>
+                    <button type="submit" class="login100-form-btn ml-2">
                         register
                     </button>
-
                 </div>
 
 

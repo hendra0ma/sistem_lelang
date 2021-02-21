@@ -17,8 +17,8 @@ class Home extends CI_Controller
 
     public function index()
     {
-
-        $this->load->view('dashboard/templates/admin/header');
+        $data['title'] = "Dashboard Admin";
+        $this->load->view('dashboard/templates/admin/header', $data);
         $this->load->view('dashboard/admin/index');
         $this->load->view('dashboard/templates/admin/footer');
     }

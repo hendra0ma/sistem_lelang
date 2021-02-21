@@ -57,7 +57,7 @@
 
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="<?= base_url() ?>/auth/auth/logout" class="dropdown-item">
+                        <a href="<?= base_url() ?>auth/auth/logout" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
 
