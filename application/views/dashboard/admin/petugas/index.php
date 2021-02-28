@@ -28,7 +28,10 @@
 
                                     <?php
                                     $i = 1;
-                                    foreach ($petugas as $data) : ?>
+                                    foreach ($petugas as $data) :
+                                        // for ($a = 0; $a < 100; $a++) :
+                                        // $faker = Faker\Factory::create();
+                                    ?>
 
                                         <tr>
                                             <th scope="row"><?= $i++ ?></th>
@@ -39,6 +42,8 @@
                                                 <a href="<?= base_url() ?>dashboard/admin/petugas/delete/<?= $data->id_petugas ?>" class="badge badge-danger" onclick="return window.confirm('yakin?')">Delete</a>
                                             </td>
                                         </tr>
+
+
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>

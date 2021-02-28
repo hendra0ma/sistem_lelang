@@ -10,4 +10,9 @@ class Admin_model extends CI_Model
         $query = $this->db->get();
         return $query->row();
     }
+    public function update($data, $id)
+    {
+        $this->db->where('id_admin', $id);
+        $this->db->update('tb_administrator', $data);
+    }
 }

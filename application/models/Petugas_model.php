@@ -16,6 +16,7 @@ class Petugas_model extends CI_Model
     }
     public function get()
     {
+
         return $this->db->get('tb_petugas')->result();
     }
     public function delete($id)

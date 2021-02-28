@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="<?= base_url('public/assets/dashboard') ?>/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('public/assets/dashboard') ?>/dist/css/adminlte.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.23/r-2.2.7/datatables.min.css" />
-
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.23/r-2.2.7/datatables.min.css" />
+     -->
+    <link rel="stylesheet" href="<?= base_url("public/assets/dashboard/datatables/css/datatables.css") ?>">
 
 </head>
 
@@ -98,10 +99,15 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url('public/assets/dashboard') ?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <?php if ($admin->gambar == "") : ?>
+                            <img src="<?= base_url() ?>public/assets/dashboard/docs/assets/img/image-default.png" class="img-circle elevation-2" alt="User Image">
+                        <?php else : ?>
+                            <img src="<?= base_url('public/assets/dashboard') ?>/docs/assets/img/upload/<?= $admin->gambar ?>" class="img-circle elevation-2" alt="User Image">
+                        <?php endif; ?>
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block"><?= $_SESSION['username'] ?></a>
+
+                        <a href="#" class="d-block"><?= $admin->nama_admin ?></a>
                     </div>
                 </div>
 
@@ -135,15 +141,21 @@
                                     </p>
                                     </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="pages/kanban.html" class="nav-link">
-                                <i class="nav-icon fas fa-columns"></i>
-                                <p>
-                                    Generate laporan
-                                </p>
-                            </a>
-                        </li>
+
                         <li class="nav-header">Menu</li>
+                        <li class="nav-item">
+                            <?php if ($this->uri->segment(3) == 'update') : ?>
+                                <a href="<?= base_url() ?>auth/admin/update" class="nav-link active">
+                                <?php else : ?>
+                                    <a href="<?= base_url() ?>auth/admin/update" class="nav-link">
+                                    <?php endif ?>
+                                    <i class="nav-icon fas fa-user-cog"></i>
+                                    <p>
+                                        Edit Profil
+                                    </p>
+                                    </a>
+                        </li>
+
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-users-cog"></i>
@@ -178,6 +190,7 @@
                             </ul>
                         </li>
                     </ul>
+
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>

@@ -1,10 +1,12 @@
 <?php
 class Petugas extends CI_Controller
 {
+    public $data;
     public function __construct()
     {
         parent::__construct();
         $this->authenticated();
+        $this->data['admin'] = $this->Admin_model->getUserByUsername($_SESSION['username']);
     }
 
     private function authenticated()
@@ -17,10 +19,11 @@ class Petugas extends CI_Controller
 
     public function index()
     {
-        $data['title'] = "Atur Petugas";
-        $data['petugas'] = $this->Petugas_model->get();
-        $this->load->view('dashboard/templates/admin/header', $data);
-        $this->load->view('dashboard/admin/petugas/index', $data);
+        $this->data['title'] = "Atur Petugas";
+        $this->data['petugas'] = $this->Petugas_model->get();
+        // die;
+        $this->load->view('dashboard/templates/admin/header', $this->data);
+        $this->load->view('dashboard/admin/petugas/index', $this->data);
         $this->load->view('dashboard/templates/admin/footer');
     }
 
@@ -73,7 +76,7 @@ class Petugas extends CI_Controller
                 ]
             );
             if ($this->form_validation->run() != false) {
-                $data = [
+                $this->data = [
                     'nama_petugas' => $this->input->post('nama_petugas', true),
                     'email' => $this->input->post('email', true),
                     'username' => $this->input->post('username', true),
@@ -81,19 +84,19 @@ class Petugas extends CI_Controller
                     'id_level' => 3
                 ];
 
-                $this->Petugas_model->register($data);
+                $this->Petugas_model->register($this->data);
 
                 $this->session->set_flashdata('message', 'anda berhasil mendaftarkan petugas');
                 redirect('dashboard/admin/petugas/');
             } else {
-                $data['title'] = "register petugas";
-                $this->load->view('dashboard/templates/admin/header', $data);
+                $this->data['title'] = "register petugas";
+                $this->load->view('dashboard/templates/admin/header', $this->data);
                 $this->load->view('dashboard/admin/petugas/register');
                 $this->load->view('dashboard/templates/admin/footer');
             }
         } else {
-            $data['title'] = "register petugas";
-            $this->load->view('dashboard/templates/admin/header', $data);
+            $this->data['title'] = "register petugas";
+            $this->load->view('dashboard/templates/admin/header', $this->data);
             $this->load->view('dashboard/admin/petugas/register');
             $this->load->view('dashboard/templates/admin/footer');
         }

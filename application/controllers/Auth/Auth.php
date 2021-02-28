@@ -46,6 +46,7 @@ class Auth extends CI_Controller
                                     'username' => $user->username,
                                     'nama' => $user->nama_lengkap,
                                     'autentikasi' => true,
+                                    'id' => $user->id_user,
                                     'level' => $user->id_level
                                 );
                                 $this->session->set_userdata($session);
@@ -71,6 +72,7 @@ class Auth extends CI_Controller
 
                                     'username' => $user->username,
                                     'nama' => $user->nama_admin,
+                                    'id' => $user->id_admin,
                                     'autentikasi' => true,
                                     'level' => $user->id_level
                                 );
@@ -99,6 +101,7 @@ class Auth extends CI_Controller
                                     'username' => $user->username,
                                     'nama' => $user->nama_petugas,
                                     'autentikasi' => true,
+                                    'id' => $user->id_petugas,
                                     'level' => $user->id_level
                                 );
                                 $this->session->set_userdata($session);
