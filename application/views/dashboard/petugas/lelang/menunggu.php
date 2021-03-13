@@ -1,5 +1,8 @@
 <div class="container">
     <div class="card">
+        <div class="card-header">
+            <h3>Lelang Menunggu Konfirmasi</h3>
+        </div>
         <div class="card-body">
             <?php if ($this->session->flashdata('message')) { ?>
                 <div class="alert alert-success alert-dismissible mt-3 fade show text-light" role="alert">
@@ -24,39 +27,42 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-
                             <th scope="col">Nama Barang</th>
-                            <th scope="col">Tanggal</th>
 
                             <th scope="col">Harga Awal</th>
-                            <th scope="col">Deskripsi Barang</th>
-                            <th>action</th>
+
+                            <th scope="col">Username Pelelang</th>
+                            <th scope="col">Nama Petugas</th>
+                            <th scope="col">status</th>
+                            <th scope="col">Action</th>
+
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $i = 1;
-                        foreach ($barang as $data) : ?>
+                        foreach ($lelang as $data) : ?>
                             <tr>
                                 <th scope="row"><?= $i++ ?></th>
                                 <td><?= $data->nama_barang ?></td>
-                                <td><?= $data->tgl ?></td>
+
                                 <td><?= $data->harga_awal ?></td>
-                                <td><?= $data->deskripsi_barang ?></td>
+
+                                <td><?= $data->username ?></td>
+                                <td><?= $data->nama_petugas ?></td>
+                                <td><?= $data->status ?></td>
                                 <td>
-                                    <a href="<?= base_url() ?>dashboard/admin/barang/delete/<?= $data->id_barang ?>" class="badge badge-danger" onclick="return confirm('yakin?')">Delete</a>
+                                    <?php if ($data->status == "menunggu") { ?>
+                                        <a href="<?= base_url() ?>dashboard/petugas/lelang/accPenawaran/<?= $data->id_lelang ?>" class="btn btn-sm btn-primary">
+                                            Accept
+                                        </a>
+                                    <?php } ?>
+
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-
-
-
-
-
-
-
             </div>
         </div>
     </div>

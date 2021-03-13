@@ -15,4 +15,20 @@ class User_model extends CI_Model
     {
         $this->db->insert('tb_masyarakat', $data);
     }
+    public function update($id, $data)
+    {
+        $this->db->where('id_user', $id);
+        $this->db->update('tb_masyarakat', $data);
+    }
+    public function delete($id)
+    {
+        $this->db->where('id_user', $id);
+        $this->db->delete('tb_masyarakat');
+    }
+    public function getCount()
+    {
+        $this->db->select('id_user');
+        $query = $this->db->get('tb_masyarakat')->num_rows();
+        return $query;
+    }
 }

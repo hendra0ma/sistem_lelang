@@ -44,7 +44,7 @@
                                 <td><?= $data->harga_awal ?></td>
                                 <td><?= $data->deskripsi_barang ?></td>
                                 <td>
-                                    <a href="<?= base_url() ?>dashboard/admin/barang/delete/<?= $data->id_barang ?>" class="badge badge-danger" onclick="return confirm('yakin?')">Delete</a>
+                                    <a href="<?= base_url() ?>dashboard/petugas/barang/delete/<?= $data->id_barang ?>" class="badge badge-danger" onclick="return confirm('yakin?')">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

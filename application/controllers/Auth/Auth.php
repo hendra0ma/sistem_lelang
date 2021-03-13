@@ -50,7 +50,7 @@ class Auth extends CI_Controller
                                     'level' => $user->id_level
                                 );
                                 $this->session->set_userdata($session);
-                                redirect('Dashboard/Masyarakat/home');
+                                redirect('Dashboard/masyarakat/home');
                             } else {
                                 $this->session->set_flashdata('message', 'Password yang anda masukan salah');
                                 redirect('auth/auth/login');

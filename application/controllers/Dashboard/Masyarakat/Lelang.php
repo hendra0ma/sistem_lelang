@@ -1,6 +1,7 @@
 <?php
-class Home extends CI_Controller
+class Lelang extends CI_Controller
 {
+    private $data;
     public function __construct()
     {
         parent::__construct();
@@ -14,16 +15,20 @@ class Home extends CI_Controller
             redirect('auth/auth/login');
         }
     }
-
-
     public function index()
     {
-        $this->data['title'] = "Dashboard Pelelangan";
-        $this->data['jumlah_barang'] = $this->Barang_model->getCount();
-        $this->data['jumlah_lelang_user'] = count($this->Lelang_model->getByUser($_SESSION['id']));
-        $this->data['title'] = "Dashboard User";
+        // die;
+        $this->data['title'] = "Tambah Lelang";
         $this->load->view('dashboard/templates/masyarakat/header', $this->data);
-        $this->load->view('dashboard/masyarakat/index', $this->data);
+        $this->load->view('dashboard/masyarakat/lelang/tambahLelang', $this->data);
+        $this->load->view('dashboard/templates/masyarakat/footer');
+    }
+    public function listLelangUser()
+    {
+        $this->data['title'] = "List Lelang Anda";
+        $this->data['lelang'] = $this->Lelang_model->getByUser($_SESSION['id']);
+        $this->load->view('dashboard/templates/masyarakat/header', $this->data);
+        $this->load->view('dashboard/masyarakat/lelang/listLelang', $this->data);
         $this->load->view('dashboard/templates/masyarakat/footer');
     }
 }

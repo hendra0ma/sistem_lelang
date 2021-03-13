@@ -24,39 +24,33 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-
                             <th scope="col">Nama Barang</th>
-                            <th scope="col">Tanggal</th>
-
+                            <th scope="col">Tanggal lelang</th>
                             <th scope="col">Harga Awal</th>
-                            <th scope="col">Deskripsi Barang</th>
-                            <th>action</th>
+                            <th scope="col">Harga Akhir</th>
+                            <th scope="col">Username Pelelang</th>
+                            <th scope="col">Nama Petugas</th>
+                            <th scope="col">status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $i = 1;
-                        foreach ($barang as $data) : ?>
+                        foreach ($lelang as $data) : ?>
                             <tr>
                                 <th scope="row"><?= $i++ ?></th>
                                 <td><?= $data->nama_barang ?></td>
-                                <td><?= $data->tgl ?></td>
+                                <td><?= $data->tgl_lelang ?></td>
                                 <td><?= $data->harga_awal ?></td>
-                                <td><?= $data->deskripsi_barang ?></td>
-                                <td>
-                                    <a href="<?= base_url() ?>dashboard/admin/barang/delete/<?= $data->id_barang ?>" class="badge badge-danger" onclick="return confirm('yakin?')">Delete</a>
-                                </td>
+                                <td><?= $data->harga_akhir ?></td>
+                                <td><?= $data->username ?></td>
+                                <td><?= $data->nama_petugas ?></td>
+                                <td><?= $data->status ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-
-
-
-
-
-
-
             </div>
         </div>
     </div>
+</div>

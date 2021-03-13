@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard 2</title>
+    <title><?= $title ?></title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="<?= base_url('public/assets/dashboard') ?>/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('public/assets/dashboard') ?>/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="<?= base_url("public/assets/dashboard/datatables/css/datatables.css") ?>">
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -45,17 +46,11 @@
                         <a href="<?= base_url() ?>auth/auth/logout" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-
                                 <div class="media-body">
-
                                     <h3 class="dropdown-item-title">
-
                                         Logout
-
                                         <span class="float-right text-sm text-light"><i class="fas fa-sign-out-alt"></i></span>
                                     </h3>
-
-
                                 </div>
                             </div>
                             <!-- Message End -->
@@ -82,8 +77,10 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="<?= base_url('public/assets/dashboard') ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <a href="<?= base_url('dashboard/petugas/home') ?>" class="brand-link">
+                <div class="image">
+
+                </div>
                 <span class="brand-text font-weight-light">Dashboard Petugas</span>
             </a>
 
@@ -92,10 +89,14 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url('public/assets/dashboard') ?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <?php if ($petugas->gambar == "") : ?>
+                            <img src="<?= base_url() ?>public/assets/dashboard/docs/assets/img/image-default.png" class="img-circle elevation-2" alt="User Image">
+                        <?php else : ?>
+                            <img src="<?= base_url('public/assets/dashboard') ?>/docs/assets/img/upload/<?= $petugas->gambar ?>" class="img-circle elevation-2" alt="User Image">
+                        <?php endif; ?>
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block"><?= $_SESSION['username'] ?></a>
+                        <a href="#" class="d-block"><?= $petugas->nama_petugas ?></a>
                     </div>
                 </div>
 
@@ -106,43 +107,93 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-
-                                </p>
-                            </a>
-
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Widgets
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                    Layout Options
-                                    <i class="fas fa-angle-left right"></i>
-
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/layout/top-nav.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Top Navigation</p>
+                            <?php if ($this->uri->segment(3) == 'home' && $this->uri->segment(4) == '') : ?>
+                                <a href="<?= base_url() ?>dashboard/petugas/home/" class="nav-link active">
+                                <?php else : ?>
+                                    <a href="<?= base_url() ?>dashboard/petugas/home/" class="nav-link">
+                                    <?php endif; ?>
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard
+                                    </p>
                                     </a>
-                                </li>
 
-                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <?php if ($this->uri->segment(4) == 'listBarang') : ?>
+                                <a href="<?= base_url() ?>dashboard/petugas/home/listBarang" class="nav-link active">
+                                <?php else : ?>
+                                    <a href="<?= base_url() ?>dashboard/petugas/home/listBarang" class="nav-link">
+                                    <?php endif; ?>
+                                    <i class="nav-icon far fa-image"></i>
+                                    <p>
+                                        Pendataan Barang
+                                    </p>
+                                    </a>
                         </li>
 
+
+                        <li class="nav-item">
+                            <?php if ($this->uri->segment(3) == 'lelang') : ?>
+                                <a href="<?= base_url() ?>dashboard/petugas/lelang/" class="nav-link active">
+                                <?php else : ?>
+                                    <a href="<?= base_url() ?>dashboard/petugas/lelang/" class="nav-link">
+                                    <?php endif; ?>
+                                    <i class="nav-icon fas fa-chart-pie"></i>
+                                    <p>
+                                        Lelang
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <?php if ($this->uri->segment(3) == 'lelang' && $this->uri->segment(4) == '') : ?>
+                                                <a href="<?= base_url() ?>dashboard/petugas/lelang" class="nav-link active">
+                                                <?php else : ?>
+                                                    <a href="<?= base_url() ?>dashboard/petugas/lelang" class="nav-link">
+                                                    <?php endif; ?>
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Menunggu</p>
+                                                    </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <?php if ($this->uri->segment(3) == 'lelang' && $this->uri->segment(4) == 'dibuka') : ?>
+                                                <a href="<?= base_url() ?>dashboard/petugas/lelang/dibuka" class="nav-link active">
+                                                <?php else : ?>
+                                                    <a href="<?= base_url() ?>dashboard/petugas/lelang/dibuka" class="nav-link">
+                                                    <?php endif; ?>
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Lelang Berjalan</p>
+                                                    </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <?php if ($this->uri->segment(3) == 'lelang' && $this->uri->segment(4) == 'ditutup') : ?>
+                                                <a href="<?= base_url() ?>dashboard/petugas/lelang/ditutup" class="nav-link active">
+                                                <?php else : ?>
+                                                    <a href="<?= base_url() ?>dashboard/petugas/lelang/ditutup" class="nav-link">
+                                                    <?php endif; ?>
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Lelang Tutup</p>
+                                                    </a>
+                                        </li>
+
+
+                                    </ul>
+                        </li>
+
+                        <li class="nav-header">Menu</li>
+                        <li class="nav-item">
+                            <?php if ($this->uri->segment(3) == 'update') : ?>
+                                <a href="<?= base_url() ?>auth/petugas/update" class="nav-link active">
+                                <?php else : ?>
+                                    <a href="<?= base_url() ?>auth/petugas/update" class="nav-link">
+                                    <?php endif ?>
+                                    <i class="nav-icon fas fa-user-cog"></i>
+                                    <p>
+                                        Edit Profil
+                                    </p>
+                                    </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

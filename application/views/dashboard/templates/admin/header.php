@@ -110,7 +110,6 @@
                         <a href="#" class="d-block"><?= $admin->nama_admin ?></a>
                     </div>
                 </div>
-
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -138,6 +137,18 @@
                                     <i class="nav-icon far fa-image"></i>
                                     <p>
                                         Pendataan Barang
+                                    </p>
+                                    </a>
+                        </li>
+                        <li class="nav-item">
+                            <?php if ($this->uri->segment(4) == 'lelang') : ?>
+                                <a href="<?= base_url() ?>dashboard/admin/home/lelang" class="nav-link active">
+                                <?php else : ?>
+                                    <a href="<?= base_url() ?>dashboard/admin/home/lelang" class="nav-link">
+                                    <?php endif; ?>
+                                    <i class="nav-icon far fa-image"></i>
+                                    <p>
+                                        Lelang
                                     </p>
                                     </a>
                         </li>
