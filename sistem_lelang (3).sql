@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2021 at 04:38 PM
+-- Generation Time: Mar 14, 2021 at 05:29 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -79,7 +79,8 @@ CREATE TABLE `tb_barang` (
 --
 
 INSERT INTO `tb_barang` (`id_barang`, `nama_barang`, `tgl`, `harga_awal`, `deskripsi_barang`, `gambar_barang`, `id_user`) VALUES
-(1, 'sabun', '2021-03-13', 100000, 'barang murah', 'sdfasd', 4);
+(8, 'Angklung', '2021-03-14', 1200, 'angklunggg', '604d8ca7214241615695015angklung.jpg', 4),
+(9, 'gendang', '2021-03-14', 123123123, 'barang mudah dipakai', '604d8dadc2bf716156952771605112933-bola.png', 4);
 
 -- --------------------------------------------------------
 
@@ -94,15 +95,17 @@ CREATE TABLE `tb_lelang` (
   `harga_akhir` varchar(25) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   `id_petugas` int(11) DEFAULT NULL,
-  `status` enum('dibuka','ditutup','menunggu') NOT NULL
+  `status` enum('dibuka','ditutup','menunggu') NOT NULL,
+  `user_bid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_lelang`
 --
 
-INSERT INTO `tb_lelang` (`id_lelang`, `id_barang`, `tgl_lelang`, `harga_akhir`, `id_user`, `id_petugas`, `status`) VALUES
-(1, 1, '2021-03-13', '200000', 5, 8, 'dibuka');
+INSERT INTO `tb_lelang` (`id_lelang`, `id_barang`, `tgl_lelang`, `harga_akhir`, `id_user`, `id_petugas`, `status`, `user_bid`) VALUES
+(8, 9, '2021-03-18', '1200', 4, 8, 'dibuka', NULL),
+(9, 8, '2021-03-14', '123123123', 4, 8, 'dibuka', NULL);
 
 -- --------------------------------------------------------
 
@@ -170,7 +173,7 @@ CREATE TABLE `tb_petugas` (
 --
 
 INSERT INTO `tb_petugas` (`id_petugas`, `nama_petugas`, `email`, `username`, `password`, `id_level`, `gambar`) VALUES
-(8, 'Hendra Si Petugas', 'petugas1@sislelang.com', 'petugas1', '$2y$10$N6cxHcfQ0OljOUMHilIEm.irKQZ7y38moEVPXwImXFZ03Yvtg8bnK', 3, 'petugas-1615628739.jpg');
+(8, 'Hendra Si Petugas', 'petugas1@sislelang.com', 'petugas1', '$2y$10$9goIHkBX/7Y/SNso6j5go.myecFNH8RSTEdQhB72RvKy1vUILH6BG', 3, 'petugas-1615628739.jpg');
 
 --
 -- Indexes for dumped tables
@@ -238,13 +241,13 @@ ALTER TABLE `tb_administrator`
 -- AUTO_INCREMENT for table `tb_barang`
 --
 ALTER TABLE `tb_barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tb_lelang`
 --
 ALTER TABLE `tb_lelang`
-  MODIFY `id_lelang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_lelang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tb_level`
