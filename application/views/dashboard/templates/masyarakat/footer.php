@@ -49,6 +49,25 @@
             $('.alert.alert-danger.alert-dismissible.mt-3.fade.show.text-light').fadeOut(500);
         }, 3000);
     });
+
+
+
+    $('.btn.btn-sm.btn-success.lihat-gambar').click(function() {
+        const id = $(this).data("id");
+
+        $.ajax({
+            url: "<?= base_url() ?>dashboard/masyarakat/Lelang/getGambarBarang",
+            data: {
+                "id": id,
+            },
+            dataType: "json",
+            type: "post",
+            success: function(data) {
+                const img = data.gambar_barang;
+                $('img.img-fluid.image').attr('src', `<?= base_url() ?>./public/assets/dashboard/docs/assets/img/upload/` + img);
+            }
+        });
+    });
 </script>
 <script>
     function readURL(input) {

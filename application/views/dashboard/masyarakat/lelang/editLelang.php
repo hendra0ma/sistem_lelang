@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h3>Buat Lelang Baru</h3>
+            <h3>Edit Barang Lelang</h3>
         </div>
         <div class="card-body">
             <div class="row">
@@ -29,7 +29,7 @@
                             <form method="post" action="" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="nama_barang">nama Barang</label>
-                                    <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="nama barang">
+                                    <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="nama barang" value="<?= $barang->nama_barang ?>">
                                     <div class="badge text-danger"><?= form_error('nama_barang') ?></div>
                                 </div>
 
@@ -43,12 +43,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="harga_awal">Harga Awal</label>
-                                    <input type="number" class="form-control" id="harga_awal" name="harga_awal" placeholder="Harga barang">
+                                    <input type="number" class="form-control" id="harga_awal" name="harga_awal" placeholder="Harga barang" value="<?= $barang->harga_awal ?>">
                                     <div class="badge text-danger"><?= form_error('harga_awal') ?></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="deskripsi_barang">deskripsi barang</label>
-                                    <textarea class="form-control" id="deskripsi_barang" name="deskripsi_barang" placeholder="deskripsi barang" cols="30" rows="10"></textarea>
+                                    <textarea class="form-control" id="deskripsi_barang" name="deskripsi_barang" placeholder="deskripsi barang" cols="30" rows="10"><?= $barang->deskripsi_barang ?></textarea>
                                     <div class="badge text-danger"><?= form_error('deskripsi_barang') ?></div>
                                 </div>
                                 <input type="submit" class="btn btn-primary" value="Submit">
@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-md-4">
                     <center>
-                        <img src="<?= base_url() ?>public/assets/dashboard/docs/assets/img/image-default.png" alt="Image Admin" class="img-fluid image" style="border-radius:10px;">
+                        <img src="<?= base_url() ?>public/assets/dashboard/docs/assets/img/upload/<?= $barang->gambar_barang ?>" alt="Image Admin" class="img-fluid image" style="border-radius:10px;">
                     </center>
                 </div>
             </div>

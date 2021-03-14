@@ -23,20 +23,23 @@ class Lelang_model extends CI_Model
         $this->db->select('*');
         $this->db->from('tb_lelang');
         $this->db->join('tb_barang', 'tb_barang.id_barang = tb_lelang.id_barang');
-        // $this->db->join('tb_petugas', 'tb_petugas.id_petugas = tb_lelang.id_petugas');
-        $this->db->join('tb_masyarakat', 'tb_masyarakat.id_user = tb_lelang.id_user');
-        $this->db->where('tb_masyarakat.id_user', $id_user);
+        $this->db->where('tb_lelang.id_user', $id_user);
         $query = $this->db->get();
         return $query->result();
     }
-    public function  getLelangByStatus($status)
+    public function  getLelangByStatus($status, $id_petugas = 0)
     {
         $this->db->select('*');
         $this->db->from('tb_lelang');
         $this->db->join('tb_barang', 'tb_barang.id_barang = tb_lelang.id_barang');
-        $this->db->join('tb_petugas', 'tb_petugas.id_petugas = tb_lelang.id_petugas');
+        if ($id_petugas > 0) {
+        } else {
+            $this->db->join('tb_petugas', 'tb_petugas.id_petugas = tb_lelang.id_petugas');
+        }
+
         $this->db->join('tb_masyarakat', 'tb_masyarakat.id_user = tb_lelang.id_user');
         $this->db->where('tb_lelang.status', $status);
+        $this->db->order_by('tgl_lelang', "ASC");
         $query = $this->db->get();
         return $query->result();
     }
@@ -63,6 +66,6 @@ class Lelang_model extends CI_Model
     }
     public function insert($data)
     {
-        $this->db->insert($data);
+        $this->db->insert('tb_lelang', $data);
     }
 }

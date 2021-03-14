@@ -12,6 +12,11 @@ class Barang_model extends CI_Model
     {
         return $this->db->get('tb_barang')->result();
     }
+    public function  getByGambar($name)
+    {
+        $this->db->where('gambar_barang', $name);
+        return $this->db->get('tb_barang')->row();
+    }
     public function  getBarangLimit($limit)
     {
         $this->db->limit($limit);
@@ -29,7 +34,7 @@ class Barang_model extends CI_Model
     }
     public function insert($data)
     {
-        $this->db->insert($data);
+        $this->db->insert('tb_barang', $data);
     }
     public function getBarangById($id)
     {

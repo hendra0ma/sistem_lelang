@@ -18,7 +18,8 @@ class Lelang extends CI_Controller
     }
     public function index()
     {
-        $this->data['lelang'] = $this->Lelang_model->getLelangByStatus('menunggu');
+        error_reporting(0);
+        $this->data['lelang'] = $this->Lelang_model->getLelangByStatus('menunggu', $this->data['petugas']->id_petugas);
         $this->data['title'] = "lelang Menunggu Konfirmasi";
         $this->load->view('dashboard/templates/petugas/header', $this->data);
         $this->load->view('dashboard/petugas/lelang/menunggu', $this->data);
@@ -45,7 +46,8 @@ class Lelang extends CI_Controller
     {
         $data = [
             'status' => 'dibuka',
-            'tgl_lelang' => date('Y-m-d')
+            'tgl_lelang' => date('Y-m-d'),
+            'id_petugas' => $this->data['petugas']->id_petugas
         ];
         $this->Lelang_model->update($id, $data);
         redirect('dashboard/petugas/lelang/');

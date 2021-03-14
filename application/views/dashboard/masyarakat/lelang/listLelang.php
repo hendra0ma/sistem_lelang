@@ -28,6 +28,7 @@
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Nama Barang</th>
+                            <th scope="col">Gambar Barang</th>
                             <th scope="col">Tanggal Lelang</th>
                             <th scope="col">Harga Awal</th>
                             <th scope="col">Harga Akhir</th>
@@ -42,19 +43,60 @@
                             <tr>
                                 <th scope="row"><?= $i++ ?></th>
                                 <td><?= $data->nama_barang ?></td>
+                                <td>
+                                    <a href="#showModal" data-toggle="modal" data-id="<?= $data->id_barang ?>" class="btn btn-sm btn-success lihat-gambar">
+                                        Lihat Gambar
+                                    </a>
+                                </td>
                                 <td><?= $data->tgl_lelang ?></td>
                                 <td><?= $data->harga_awal ?></td>
                                 <td><?= $data->harga_akhir ?></td>
                                 <td><?= $data->status ?></td>
                                 <td>
-                                    <a href="<?= base_url() ?>dashboard/masyarakat/lelang/cancel/<?= $data->id_lelang ?>/<?= $data->id_barang ?>" class="btn btn-sm btn-danger">
-                                        Cancel
-                                    </a>
+                                    <?php if ($data->status == "ditutup") {
+                                    ?>
+                                    <?php } else if ($data->status == "dibuka") { ?>
+                                        <a href="<?= base_url() ?>dashboard/masyarakat/lelang/cancel/<?= $data->id_lelang ?>/<?= $data->id_barang ?>" class="btn btn-sm btn-danger">
+                                            Cancel
+                                        </a>
+                                    <?php } else { ?>
+                                        <a href="<?= base_url() ?>dashboard/masyarakat/lelang/cancel/<?= $data->id_lelang ?>/<?= $data->id_barang ?>" class="btn btn-sm btn-danger">
+                                            Cancel
+                                        </a>
+                                        <a href="<?= base_url() ?>dashboard/masyarakat/lelang/edit/<?= $data->id_lelang ?>" class="btn btn-sm btn-primary">
+                                            Edit
+                                        </a>
+                                    <?php } ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class=" modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Gambar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <center>
+                            <img src="<?= base_url() ?>assets/dashboard/docs/assets/img/image-default.png" alt="Image Admin" class="img-fluid image" style="height:350px !important;border-radius:10px;">
+                        </center>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
