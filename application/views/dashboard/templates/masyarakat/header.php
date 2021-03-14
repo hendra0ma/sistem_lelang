@@ -160,6 +160,16 @@
                                                     <p>Lelang Anda</p>
                                                     </a>
                                         </li>
+                                        <li class="nav-item">
+                                            <?php if ($this->uri->segment(4) == 'listDataMenang') : ?>
+                                                <a href="<?= base_url() ?>dashboard/masyarakat/home/listDataMenang/" class="nav-link active">
+                                                <?php else : ?>
+                                                    <a href="<?= base_url() ?>dashboard/masyarakat/home/listDataMenang/" class="nav-link">
+                                                    <?php endif ?>
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Yang Anda Menangkan</p>
+                                                    </a>
+                                        </li>
                                     </ul>
                         </li>
                         <li class="nav-item">

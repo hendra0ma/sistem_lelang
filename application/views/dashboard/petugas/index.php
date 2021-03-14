@@ -26,11 +26,14 @@
                     <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-shopping-cart"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">Jumlah Lelang</span>
+
                         <span class="info-box-number"><?= $jumlah_lelang ?></span>
                     </div>
                     <!-- /.info-box-content -->
+
                 </div>
                 <!-- /.info-box -->
+
             </div>
             <!-- /.col -->
             <div class="clearfix hidden-md-up"></div>

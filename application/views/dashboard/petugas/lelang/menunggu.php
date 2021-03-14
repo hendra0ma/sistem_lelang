@@ -4,6 +4,7 @@
             <h3>Lelang Menunggu Konfirmasi</h3>
         </div>
         <div class="card-body">
+            <a href="<?= base_url() ?>dashboard/petugas/export/lelang" class="btn btn-primary mb-3">Export Semua Data Ke PDF</a>
             <?php if ($this->session->flashdata('message')) { ?>
                 <div class="alert alert-success alert-dismissible mt-3 fade show text-light" role="alert">
                     <?= $this->session->flashdata('message') ?>

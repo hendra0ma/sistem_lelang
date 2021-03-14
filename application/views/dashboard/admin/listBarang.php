@@ -20,6 +20,8 @@
                 </div>
             <?php  } ?>
             <div class="table-responsive">
+                <a href="<?= base_url() ?>dashboard/admin/export/barang" class="btn btn-primary mb-3">Export PDF</a>
+
                 <table class="table table_datatable">
                     <thead>
                         <tr>

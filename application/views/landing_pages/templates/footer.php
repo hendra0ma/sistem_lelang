@@ -7,57 +7,38 @@
                     <div class="single-footer-widget tp_widgets">
                         <h4 class="footer_title large_title">Our Mission</h4>
                         <p>
-                            So seed seed green that winged cattle in. Gathering thing made fly you're no
-                            divided deep moved us lan Gathering thing us land years living.
+                            Memudahkan pengguna dalam menjual belikan barang yang ingin di jual , dengan metode lelang
                         </p>
-                        <p>
-                            So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
-                        </p>
+
                     </div>
                 </div>
                 <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
                     <div class="single-footer-widget tp_widgets">
                         <h4 class="footer_title">Quick Links</h4>
                         <ul class="list">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Shop</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Product</a></li>
-                            <li><a href="#">Brand</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="<?= base_url('LandingPages/Home/') ?>">Home</a></li>
+                            <li><a href="<?= base_url('LandingPages/Home/ListBarang') ?>">list barang</a></li>
+
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="single-footer-widget instafeed">
-                        <h4 class="footer_title">Gallery</h4>
-                        <ul class="list instafeed d-flex flex-wrap">
-                            <li><img src="<?= base_url('public/assets/landing_pages') ?>/img/gallery/r1.jpg" alt=""></li>
-                            <li><img src="<?= base_url('public/assets/landing_pages') ?>/img/gallery/r2.jpg" alt=""></li>
-                            <li><img src="<?= base_url('public/assets/landing_pages') ?>/img/gallery/r3.jpg" alt=""></li>
-                            <li><img src="<?= base_url('public/assets/landing_pages') ?>/img/gallery/r5.jpg" alt=""></li>
-                            <li><img src="<?= base_url('public/assets/landing_pages') ?>/img/gallery/r7.jpg" alt=""></li>
-                            <li><img src="<?= base_url('public/assets/landing_pages') ?>/img/gallery/r8.jpg" alt=""></li>
-                        </ul>
-                    </div>
-                </div>
+
                 <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
                     <div class="single-footer-widget tp_widgets">
                         <h4 class="footer_title">Contact Us</h4>
                         <div class="ml-40">
                             <p class="sm-head">
                                 <span class="fa fa-location-arrow"></span>
-                                Head Office
+                                Kantor Pusat
                             </p>
-                            <p>123, Main Street, Your City</p>
+                            <p>Jl terusan bejo no 1 a, kota batu</p>
 
                             <p class="sm-head">
                                 <span class="fa fa-phone"></span>
-                                Phone Number
+                                Nomor HP
                             </p>
                             <p>
-                                +123 456 7890 <br>
-                                +123 456 7890
+                                0895 6200 87695
                             </p>
 
                             <p class="sm-head">
@@ -65,8 +46,7 @@
                                 Email
                             </p>
                             <p>
-                                free@infoexample.com <br>
-                                www.infoexample.com
+                                hendra0maulidan@gmail.com
                             </p>
                         </div>
                     </div>
@@ -93,7 +73,7 @@
 
 
 
-<script src="<?= base_url('public/assets/landing_pages') ?>/vendors/jquery/jquery-3.2.1.min.js"></script>
+<script src="<?= base_url('public/assets/dashboard') ?>/docs/assets/plugins/jquery/jquery.js"></script>
 <script src="<?= base_url('public/assets/landing_pages') ?>/vendors/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="<?= base_url('public/assets/landing_pages') ?>/vendors/skrollr.min.js"></script>
 <script src="<?= base_url('public/assets/landing_pages') ?>/vendors/owl-carousel/owl.carousel.min.js"></script>
@@ -101,6 +81,28 @@
 <script src="<?= base_url('public/assets/landing_pages') ?>/vendors/jquery.ajaxchimp.min.js"></script>
 <script src="<?= base_url('public/assets/landing_pages') ?>/vendors/mail-script.js"></script>
 <script src="<?= base_url('public/assets/landing_pages') ?>/js/main.js"></script>
+
+<script>
+    $(document).ready(function() {
+
+        let button = $('button.btn.btn-outline-dark');
+        button.on('click', function() {
+            console.log($('#keyword').val());
+            $.ajax({
+                url: "<?= base_url() ?>landingpages/home/caribarang",
+                data: {
+                    "keyword": $('#keyword').val(),
+                },
+
+                type: "post",
+                success: function(data) {
+                    $('div.row.value-ajax').html(data);
+                    console.log(data);
+                }
+            });
+        });
+    });
+</script>
 </body>
 
 </html>

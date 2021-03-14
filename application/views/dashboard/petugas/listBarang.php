@@ -19,6 +19,7 @@
                     </button>
                 </div>
             <?php  } ?>
+            <a href="<?= base_url() ?>dashboard/petugas/export/barang" class="btn btn-primary mb-3">Export Barang PDF</a>
             <div class="table-responsive">
                 <table class="table table_datatable">
                     <thead>

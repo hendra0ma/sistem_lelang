@@ -75,13 +75,10 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-
                                 <th scope="col">Nama Barang</th>
                                 <th scope="col">Tanggal</th>
-
                                 <th scope="col">Harga Awal</th>
                                 <th scope="col">Deskripsi Barang</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -99,13 +96,6 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-
-
-
-
-
-
-
                 </div>
             </div>
 

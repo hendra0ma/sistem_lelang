@@ -18,6 +18,16 @@ class Lelang_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    public function  getLelangByIdLanding($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_lelang');
+        $this->db->join('tb_barang', 'tb_barang.id_barang = tb_lelang.id_barang');
+        $this->db->where('tb_lelang.id_lelang', $id);
+
+        $query = $this->db->get();
+        return $query->row();
+    }
     public function  getByUser($id_user)
     {
         $this->db->select('*');

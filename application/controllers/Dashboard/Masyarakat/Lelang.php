@@ -179,4 +179,37 @@ class Lelang extends CI_Controller
         $result = $this->db->get('tb_barang');
         echo json_encode($result->row());
     }
+    public function penawaran()
+    {
+        $data['barang'] = $this->Lelang_model->getLelangByIdLanding($this->input->post('id'));
+        $this->form_validation->set_rules(
+            'harga_penawaran',
+            'harga penawaran',
+            'trim|required',
+            [
+                'required' => 'harga penawaran wajib di isi',
+            ]
+        );
+        if ($this->form_validation->run() == FALSE) {
+            $this->data['title'] = "checkout Lelang";
+
+            $this->load->view('landing_pages/templates/header');
+            $this->load->view('landing_pages/home/checkout', $data);
+            $this->load->view('landing_pages/templates/footer');
+        } else {
+            if ($this->input->post('harga_penawaran') <= $data['barang']->harga_akhir) {
+                $this->session->set_flashdata('message', 'Penawaran harus lebih tinggi dari harga akhir');
+                redirect('landingpages/home/show/' . $this->input->post('id'));
+            } else {
+
+                $dataLelang =  [
+                    'harga_akhir' => $this->input->post('harga_penawaran'),
+                    'user_bid' =>  $this->data['user']->id_user,
+                ];
+                $this->Lelang_model->update($this->input->post('id'), $dataLelang);
+                $this->session->set_flashdata('message', 'Anda Berhasil Menawar barang ini , tunggu sampai lelang selesai ya.. , jika anda memengkan lelang akan ada pengumuman di halaman dashboard , terima kasih');
+                redirect('landingpages/home/show/' . $this->input->post('id'));
+            }
+        }
+    }
 }
