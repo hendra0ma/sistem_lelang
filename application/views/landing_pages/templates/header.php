@@ -34,6 +34,7 @@
                             <li class="nav-item active"><a class="nav-link" href="<?= base_url('LandingPages/Home') ?>">Home</a></li>
 
                             <li class="nav-item"><a class="nav-link" href="<?= base_url('LandingPages/Home/ListBarang') ?>">List Barang</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<?= base_url('dashboard/masyarakat/Lelang/') ?>">Dashboard</a></li>
                         </ul>
 
                         <ul class="nav-shop">

@@ -28,12 +28,15 @@ class Lelang_model extends CI_Model
         $query = $this->db->get();
         return $query->row();
     }
-    public function  getByUser($id_user)
+    public function  getByUser($id_user, $status = '')
     {
         $this->db->select('*');
         $this->db->from('tb_lelang');
         $this->db->join('tb_barang', 'tb_barang.id_barang = tb_lelang.id_barang');
         $this->db->where('tb_lelang.id_user', $id_user);
+        if ($status != "") {
+            $this->db->where_not_in('tb_lelang.status', [$status]);
+        }
         $query = $this->db->get();
         return $query->result();
     }

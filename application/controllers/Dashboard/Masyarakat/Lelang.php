@@ -161,7 +161,7 @@ class Lelang extends CI_Controller
     public function listLelangUser()
     {
         $this->data['title'] = "List Lelang Anda";
-        $this->data['lelang'] = $this->Lelang_model->getByUser($_SESSION['id']);
+        $this->data['lelang'] = $this->Lelang_model->getByUser($_SESSION['id'], "ditutup");
         $this->load->view('dashboard/templates/masyarakat/header', $this->data);
         $this->load->view('dashboard/masyarakat/lelang/listLelang', $this->data);
         $this->load->view('dashboard/templates/masyarakat/footer');
@@ -207,9 +207,27 @@ class Lelang extends CI_Controller
                     'user_bid' =>  $this->data['user']->id_user,
                 ];
                 $this->Lelang_model->update($this->input->post('id'), $dataLelang);
-                $this->session->set_flashdata('message', 'Anda Berhasil Menawar barang ini , tunggu sampai lelang selesai ya.. , jika anda memengkan lelang akan ada pengumuman di halaman dashboard , terima kasih');
+                $this->session->set_flashdata('message', 'Anda Berhasil Menawar barang ini , tunggu sampai lelang selesai ya.. , jika anda memenangkan lelang akan ada pengumuman di halaman dashboard , terima kasih');
                 redirect('landingpages/home/show/' . $this->input->post('id'));
             }
         }
+    }
+    public function history()
+    {
+        $this->data['lelang'] = $this->getHistory($this->data['user']->id_user);
+        $this->load->view('dashboard/templates/masyarakat/header', $this->data);
+        $this->load->view('dashboard/masyarakat/lelang/history', $this->data);
+        $this->load->view('dashboard/templates/masyarakat/footer');
+    }
+    private function getHistory($id)
+    {
+        $this->db->select('*');
+        $this->db->from('history_lelang');
+        $this->db->join('tb_barang', 'tb_barang.id_barang = history_lelang.id_barang');
+        $this->db->join('tb_lelang', 'tb_lelang.id_lelang = history_lelang.id_lelang');
+        $this->db->join('tb_masyarakat', 'tb_masyarakat.id_user = history_lelang.id_user');
+        $this->db->where('tb_masyarakat.id_user', $id);
+        $query = $this->db->get();
+        return $query->result();
     }
 }

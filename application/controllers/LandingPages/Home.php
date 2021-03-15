@@ -33,7 +33,7 @@ class Home extends CI_Controller
     {
         $this->db->select('*');
         $this->db->from('tb_barang');
-        $this->db->where_not_in('status', ['ditutup']);
+        $this->db->where_not_in('status', ['ditutup', 'menunggu']);
         $this->db->like('nama_barang', $keyword);
         return $this->db->get()->result();
     }
@@ -42,7 +42,7 @@ class Home extends CI_Controller
         $this->db->select('*');
         $this->db->from('tb_barang');
         $this->db->join('tb_lelang', 'tb_lelang.id_barang = tb_barang.id_barang');
-        $this->db->where_not_in('status', ['ditutup']);
+        $this->db->where_not_in('status', ['ditutup', 'menunggu']);
         return $this->db->get()->result();
     }
 }
