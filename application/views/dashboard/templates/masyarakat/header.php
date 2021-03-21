@@ -163,6 +163,7 @@
                                                     <p>Buat Lelang</p>
                                                     </a>
                                         </li>
+
                                         <li class="nav-item">
                                             <?php if ($this->uri->segment(4) == 'listLelangUser') : ?>
                                                 <a href="<?= base_url() ?>dashboard/masyarakat/Lelang/listLelangUser/" class="nav-link active">
@@ -181,6 +182,16 @@
                                                     <?php endif ?>
                                                     <i class="far fa-circle nav-icon"></i>
                                                     <p>Yang Anda Menangkan</p>
+                                                    </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <?php if ($this->uri->segment(4) == 'history') : ?>
+                                                <a href="<?= base_url() ?>dashboard/masyarakat/Lelang/history" class="nav-link active">
+                                                <?php else : ?>
+                                                    <a href="<?= base_url() ?>dashboard/masyarakat/Lelang/history" class="nav-link">
+                                                    <?php endif ?>
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>history Lelang</p>
                                                     </a>
                                         </li>
                                     </ul>

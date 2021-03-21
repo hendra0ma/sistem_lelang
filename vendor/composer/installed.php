@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '712afa2d93cd28dfc124e4d04b04b84cb418f2c8',
+    'reference' => '65eaf4573eba42fae94407f091140c99d9c6236d',
     'name' => 'codeigniter/framework',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '712afa2d93cd28dfc124e4d04b04b84cb418f2c8',
+      'reference' => '65eaf4573eba42fae94407f091140c99d9c6236d',
     ),
     'doctrine/instantiator' => 
     array (
@@ -296,21 +296,21 @@
     ),
     'symfony/yaml' => 
     array (
-      'pretty_version' => 'v4.4.19',
-      'version' => '4.4.19.0',
+      'pretty_version' => 'v4.4.20',
+      'version' => '4.4.20.0',
       'aliases' => 
       array (
       ),
-      'reference' => '17ed9f14c1aa05b1a5cf2e2c5ef2d0be28058ef9',
+      'reference' => '29e61305e1c79d25f71060903982ead8f533e267',
     ),
     'webmozart/assert' => 
     array (
-      'pretty_version' => '1.9.1',
-      'version' => '1.9.1.0',
+      'pretty_version' => '1.10.0',
+      'version' => '1.10.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'bafc69caeb4d49c39fd0779086c03a3738cbb389',
+      'reference' => '6964c76c7804814a842473e0c8fd15bab0f18e25',
     ),
   ),
 );
