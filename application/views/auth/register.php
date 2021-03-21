@@ -64,13 +64,28 @@
                         </label>
                     </div> -->
 
-                <div class="container-login100-form-btn">
+                <!-- <div class="container-login100-form-btn">
                     <button type="submit" class="login100-form-btn mr-2">
                         register
                     </button>
                     <a href="<?= base_url() ?>auth/auth/login" class="login100-form-btn ml-2">Login</a>
-                </div>
+                </div> -->
+                <div class="row justify-content-center">
+                    <div class="col-md-10 mb-3">
+                        <button type="submit" class="btn btn-light btn-lg btn-block btn-hover" style="border-radius:30px;">
+                            register
+                        </button>
+                    </div>
+                    <div class="col-md-10">
+                        <center>
+                            Sudah Punya akun ?
+                            <a href="<?= base_url() ?>auth/auth/login" class="text-light">
+                                Login Sekarang
+                            </a>
+                        </center>
 
+                    </div>
+                </div>
 
 
             </form>

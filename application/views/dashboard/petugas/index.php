@@ -83,6 +83,7 @@
                                 <th scope="col">Tanggal</th>
 
                                 <th scope="col">Harga Awal</th>
+
                                 <th scope="col">Deskripsi Barang</th>
 
                             </tr>
@@ -94,8 +95,9 @@
                                 <tr>
                                     <th scope="row"><?= $i++ ?></th>
                                     <td><?= $data->nama_barang ?></td>
-                                    <td><?= $data->tgl ?></td>
-                                    <td><?= $data->harga_awal ?></td>
+                                    <td class="formatTanggal"><?= $data->tgl ?></td>
+                                    <td class="formatHarga"><?= $data->harga_awal ?></td>
+
                                     <td><?= $data->deskripsi_barang ?></td>
 
                                 </tr>

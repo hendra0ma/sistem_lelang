@@ -88,10 +88,9 @@
                                 <tr>
                                     <th scope="row"><?= $i++ ?></th>
                                     <td><?= $data->nama_barang ?></td>
-                                    <td><?= $data->tgl ?></td>
-                                    <td><?= $data->harga_awal ?></td>
+                                    <td class="formatTanggal"><?= $data->tgl ?></td>
+                                    <td class="formatHarga"><?= $data->harga_awal ?></td>
                                     <td><?= $data->deskripsi_barang ?></td>
-
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

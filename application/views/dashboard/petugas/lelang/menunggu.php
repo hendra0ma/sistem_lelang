@@ -47,20 +47,52 @@
                                 <th scope="row"><?= $i++ ?></th>
                                 <td><?= $data->nama_barang ?></td>
 
-                                <td><?= $data->harga_awal ?></td>
+                                <td class="formatHarga"><?= $data->harga_awal ?></td>
 
                                 <td><?= $data->username ?></td>
                                 <td><?= $data->nama_petugas ?></td>
                                 <td><?= $data->status ?></td>
                                 <td>
                                     <?php if ($data->status == "menunggu") { ?>
-                                        <a href="<?= base_url() ?>dashboard/petugas/lelang/accPenawaran/<?= $data->id_lelang ?>" class="btn btn-sm btn-primary">
+                                        <!-- <a href="<?= base_url() ?>dashboard/petugas/lelang/accPenawaran/<?= $data->id_lelang ?>" class="btn btn-sm btn-primary">
+                                            Accept
+                                        </a> -->
+                                        <a href="#formAcc<?= $data->id_lelang ?>" data-toggle="modal" class="btn btn-sm btn-primary">
                                             Accept
                                         </a>
                                     <?php } ?>
 
                                 </td>
                             </tr>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="formAcc<?= $data->id_lelang ?>" tabindex="-1" aria-labelledby="formAccLabel<?= $data->id_lelang ?>" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="formAccLabel<?= $data->id_lelang ?>">Acc</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action="<?= base_url() ?>dashboard/petugas/lelang/accPenawaran/<?= $data->id_lelang ?>" method="post">
+                                            <div class="modal-body">
+
+                                                <div class="form-group">
+                                                    <label for="Kelipatan">Minimal Kelipatan</label>
+                                                    <input type="number" name="kelipatan" class="form-control" id="Kelipatan" placeholder="Kelipatan">
+                                                    <div class="badge text-danger"><?= form_error('kelipatan') ?></div>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Accept</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         <?php endforeach; ?>
                     </tbody>
                 </table>

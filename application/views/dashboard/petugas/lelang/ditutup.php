@@ -29,6 +29,8 @@
                             <th scope="col">No</th>
                             <th scope="col">Nama Barang</th>
                             <th scope="col">Harga akhir</th>
+                            <th scope="col">Fee Petugas</th>
+
                             <th scope="col">Username Pemenang</th>
                             <th scope="col">Nama Petugas</th>
                             <th scope="col">status</th>
@@ -44,7 +46,8 @@
                                 <th scope="row"><?= $i++ ?></th>
                                 <td><?= $data->nama_barang ?></td>
 
-                                <td><?= $data->harga_akhir ?></td>
+                                <td class="formatHarga"><?= $data->harga_akhir ?></td>
+                                <td class="formatHarga"><?= $data->fee_petugas ?></td>
 
                                 <td>
                                     <?php

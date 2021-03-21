@@ -127,6 +127,19 @@
                                     </a>
                         </li>
                         <li class="nav-item">
+
+                            <?php if ($this->uri->segment(3) == 'home' && $this->uri->segment(4) == 'BarangLelang') : ?>
+                                <a href="<?= base_url() ?>dashboard/masyarakat/home/BarangLelang" class="nav-link active">
+                                <?php else : ?>
+                                    <a href="<?= base_url() ?>dashboard/masyarakat/home/BarangLelang" class="nav-link">
+                                    <?php endif; ?>
+                                    <i class="nav-icon fas fa-shopping-bag"></i>
+                                    <p>
+                                        Barang Lelang
+                                    </p>
+                                    </a>
+                        </li>
+                        <li class="nav-item">
                             <?php if ($this->uri->segment(3) == 'Lelang') : ?>
                                 <a href="<?= base_url() ?>dashboard/masyarakat/Lelang/" class="nav-link active">
                                 <?php else : ?>

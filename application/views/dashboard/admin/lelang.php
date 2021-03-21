@@ -29,6 +29,7 @@
                             <th scope="col">Tanggal lelang</th>
                             <th scope="col">Harga Awal</th>
                             <th scope="col">Harga Akhir</th>
+                            <th scope="col">Kelipatan</th>
                             <th scope="col">Username Pelelang</th>
                             <th scope="col">Nama Petugas</th>
                             <th scope="col">status</th>
@@ -41,9 +42,10 @@
                             <tr>
                                 <th scope="row"><?= $i++ ?></th>
                                 <td><?= $data->nama_barang ?></td>
-                                <td><?= $data->tgl_lelang ?></td>
-                                <td><?= $data->harga_awal ?></td>
-                                <td><?= $data->harga_akhir ?></td>
+                                <td class="formatTanggal"><?= $data->tgl_lelang ?></td>
+                                <td class="formatHarga"><?= $data->harga_awal ?></td>
+                                <td class="formatHarga"><?= $data->harga_akhir ?></td>
+                                <td class="formatHarga"><?= $data->kelipatan ?></td>
                                 <td><?= $data->username ?></td>
                                 <td><?= $data->nama_petugas ?></td>
                                 <td><?= $data->status ?></td>

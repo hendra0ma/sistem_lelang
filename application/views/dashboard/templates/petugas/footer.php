@@ -41,6 +41,22 @@
 <script src="<?= base_url('public/assets/dashboard/datatables/js/datatables.js') ?>"></script>
 
 <script>
+    const formatter = new Intl.NumberFormat('IDN', {
+        // style: 'currency',
+        // currency: 'RP',
+        // minimumFractionDigits: 2
+    })
+    for (let i = 0; i < $('.formatHarga').length; i++) {
+        $(".formatHarga")[i].innerHTML = formatter.format($('.formatHarga')[i].innerHTML);
+    }
+    const tanggal = $('.formatTanggal');
+    for (let i = 0; i <= tanggal.length; i++) {
+        let pecah = tanggal[i].innerHTML.split("-");
+        let gabung = pecah[2] + "-" + pecah[1] + "-" + pecah[0];
+        tanggal[i].innerHTML = gabung;
+    }
+
+
     $(document).ready(function() {
         $('.table.table_datatable').DataTable();
         setTimeout(function() {

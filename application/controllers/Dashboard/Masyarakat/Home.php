@@ -47,4 +47,46 @@ class Home extends CI_Controller
         $this->load->view('dashboard/masyarakat/listDataMenang', $this->data);
         $this->load->view('dashboard/templates/masyarakat/footer');
     }
+    public function BarangLelang()
+    {
+        $data['barang'] = $this->queryResult();
+        $this->data['title'] = "Barang Lelang";
+        $this->load->view('dashboard/templates/masyarakat/header', $this->data);
+        $this->load->view('landing_pages/home/listBarang', $data);
+        $this->load->view('dashboard/templates/masyarakat/footer');
+    }
+    public function show($id)
+    {
+        $data['barang'] = $this->Lelang_model->getLelangByIdLanding($id);
+        $this->data['title'] = "Penawaran";
+        $this->load->view('dashboard/templates/masyarakat/header', $this->data);
+        $this->load->view('landing_pages/home/checkout', $data);
+        $this->load->view('dashboard/templates/masyarakat/footer');
+    }
+    public function cariBarang()
+    {
+        $keyword = $_POST['keyword'];
+        $data['barang'] = $this->querycari($keyword);
+        $this->load->view('landing_pages/home/search', $data);
+    }
+
+    private function querycari($keyword)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_barang');
+        $this->db->join('tb_lelang', 'tb_lelang.id_barang = tb_barang.id_barang');
+        $this->db->where('tb_lelang.id_user !=', $this->data['user']->id_user);
+        $this->db->where_not_in('status', ['ditutup']);
+        $this->db->like('tb_barang.nama_barang', $keyword);
+        return $this->db->get()->result();
+    }
+    private function queryResult()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_barang');
+        $this->db->join('tb_lelang', 'tb_lelang.id_barang = tb_barang.id_barang');
+        $this->db->where('tb_lelang.id_user !=', $this->data['user']->id_user);
+        $this->db->where_not_in('status', ['ditutup']);
+        return $this->db->get()->result();
+    }
 }

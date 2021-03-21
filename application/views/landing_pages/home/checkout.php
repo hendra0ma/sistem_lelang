@@ -1,6 +1,11 @@
 <div class="product_image_area">
-    <div class="container">
-        <div class="row s_product_inner">
+    <div class="container card">
+        <div class="card-header">
+            <h3>
+                Tawar Harga Barang ini
+            </h3>
+        </div>
+        <div class="row card-body">
             <div class="col-lg-6">
                 <?php if ($this->session->flashdata('message')) { ?>
                     <div class="alert alert-success alert-dismissible mt-3 fade show text-dark" role="alert">
@@ -20,59 +25,24 @@
                         </button>
                     </div>
                 <?php  } ?>
-
-                <div class="owl-carousel owl-theme s_Product_carousel owl-loaded owl-drag">
-
-                    <!-- <div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div> -->
-                    <div class="owl-stage-outer">
-                        <div class="owl-stage" style="transform: translate3d(-872px, 0px, 0px); transition: all 0s ease 0s; width: 2180px;">
-                            <div class="owl-item cloned" style="width: 436px;">
-                                <div class="single-prd-item">
-                                    <img class="img-fluid" src="<?= base_url() ?>public/assets/dashboard/docs/assets/img/upload/<?= $barang->gambar_barang ?>" alt="">
-                                </div>
-                            </div>
-                            <div class="owl-item cloned" style="width: 436px;">
-                                <div class="single-prd-item">
-                                    <img class="img-fluid" src="<?= base_url() ?>public/assets/dashboard/docs/assets/img/upload/<?= $barang->gambar_barang ?>" alt="">
-                                </div>
-                            </div>
-                            <div class="owl-item active" style="width: 436px;">
-                                <div class="single-prd-item">
-                                    <img class="img-fluid" src="<?= base_url() ?>public/assets/dashboard/docs/assets/img/upload/<?= $barang->gambar_barang ?>" alt="">
-                                </div>
-                            </div>
-                            <div class="owl-item cloned" style="width: 436px;">
-                                <div class="single-prd-item">
-                                    <img class="img-fluid" src="<?= base_url() ?>public/assets/dashboard/docs/assets/img/upload/<?= $barang->gambar_barang ?>" alt="">
-                                </div>
-                            </div>
-                            <div class="owl-item cloned" style="width: 436px;">
-                                <div class="single-prd-item">
-                                    <img class="img-fluid" src="<?= base_url() ?>public/assets/dashboard/docs/assets/img/upload/<?= $barang->gambar_barang ?>" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>
-                    <div class="owl-dots disabled"></div>
-                </div>
+                <img class="img-fluid" src="<?= base_url() ?>public/assets/dashboard/docs/assets/img/upload/<?= $barang->gambar_barang ?>" alt="">
             </div>
-            <div class="col-lg-5 offset-lg-1">
+            <div class="col-lg-4 offset-lg-1">
 
                 <div class="s_product_text">
                     <h3><?= $barang->nama_barang ?></h3>
 
-                    <h2><?= $barang->harga_akhir ?></h2>
-
+                    <h2 class="formatHarga"><?= $barang->harga_awal ?></h2>
+                    <span class="text-danger">
+                        kelipatan
+                        <span class="formatHarga">
+                            <?= $barang->kelipatan ?>
+                        </span>
+                    </span>
                     <p><?= $barang->deskripsi_barang ?></p>
 
                     <form action="<?= base_url() ?>dashboard/masyarakat/lelang/penawaran" method="post" class="form-group">
-                        <table class="table text-dark">
+                        <table class="table text-light">
                             <?php
                             $penawar = $this->db->where('id_user', $barang->user_bid)->get('tb_masyarakat')->result();
                             foreach ($penawar as $user) {
@@ -82,6 +52,13 @@
 
                                     <th>
                                         <?= $user->username ?>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Harga Penawar </th>
+
+                                    <th class="formatHarga">
+                                        <?= $barang->harga_akhir ?>
                                     </th>
                                 </tr>
                             <?php } ?>

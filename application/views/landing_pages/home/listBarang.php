@@ -1,12 +1,17 @@
-<div class="container mt-3">
-    <div class="col-xl-12 col-lg-8 col-md-7">
+<div class="container card mt-3">
+    <div class="card-header">
+        <h3>
+            Barang yang Sedang di Lelang
+        </h3>
+    </div>
+    <div class=" card-body col-xl-12 col-lg-8 col-md-7">
         <!-- Start Filter Bar -->
         <div class="row mt-2 mb-3">
             <div class="col-8 mt-1">
-                <input type="text" placeholder="cari barang" name="keyword" id="keyword" class="form-control">
+                <input type="text" placeholder="cari barang" name="keyword" id="keyword" class="form-control border-light">
             </div>
             <div class="col-4 mt-1">
-                <button class="btn btn-outline-dark">cari</button>
+                <button class="btn btn-outline-light cari">cari</button>
             </div>
         </div>
         <!-- End Filter Bar -->
@@ -16,21 +21,23 @@
             <div class="row value-ajax">
                 <?php foreach ($barang as $data) { ?>
                     <div class="col-md-6 col-lg-4">
-                        <div class="card text-center card-product">
-                            <div class="card-product__img">
-                                <img class="card-img" style="height: 200px !important;" src="<?= base_url() ?>public/assets/dashboard/docs/assets/img/upload/<?= $data->gambar_barang ?>" alt="">
-                                <ul class="card-product__imgOverlay">
-                                    <li><a href="<?= base_url() ?>landingPages/home/show/<?= $data->id_lelang ?>"><i class="ti-shopping-cart"></i></a></li>
-                                </ul>
+                        <a href="<?= base_url() ?>dashboard/masyarakat/home/show/<?= $data->id_lelang ?>" class="text-light">
+                            <div class="card text-center card-product">
+                                <div class="card-header">
+                                    <h4>
+                                        <?= $data->nama_barang ?>
+                                    </h4>
+                                    <img class="img-fluid" src="<?= base_url() ?>public/assets/dashboard/docs/assets/img/upload/<?= $data->gambar_barang ?>" alt="">
+                                </div>
+                                <div class="card-body">
+
+                                    <p class="text-light ">Rp .
+                                        <span class="formatHarga">
+                                            <?= $data->harga_akhir ?>
+                                        </span>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <p></p>
-                                <h4 class="card-product__title"><a href="#">
-                                        <?= $data->nama_barang ?> </a>
-                                </h4>
-                                <p class="card-product__price"><?= $data->harga_akhir ?></p>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 <?php } ?>
             </div>

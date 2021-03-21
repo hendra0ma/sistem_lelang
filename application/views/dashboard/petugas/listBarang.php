@@ -30,6 +30,7 @@
                             <th scope="col">Tanggal</th>
 
                             <th scope="col">Harga Awal</th>
+                            <th scope="col">Kelipatan</th>
                             <th scope="col">Deskripsi Barang</th>
                             <th>action</th>
                         </tr>
@@ -41,8 +42,9 @@
                             <tr>
                                 <th scope="row"><?= $i++ ?></th>
                                 <td><?= $data->nama_barang ?></td>
-                                <td><?= $data->tgl ?></td>
-                                <td><?= $data->harga_awal ?></td>
+                                <td class="formatTanggal"><?= $data->tgl ?></td>
+                                <td class="formatHarga"><?= $data->harga_awal ?></td>
+                                <td class="formatHarga"><?= $data->kelipatan ?></td>
                                 <td><?= $data->deskripsi_barang ?></td>
                                 <td>
                                     <a href="<?= base_url() ?>dashboard/petugas/barang/delete/<?= $data->id_barang ?>" class="badge badge-danger" onclick="return confirm('yakin?')">Delete</a>

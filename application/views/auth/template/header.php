@@ -31,6 +31,12 @@
         .wrap-login100 {
             display: none;
         }
+
+        .btn-hover:hover {
+            color: white;
+            background-color: #9152f8;
+            border-color: #9152f8;
+        }
     </style>
 </head>
 

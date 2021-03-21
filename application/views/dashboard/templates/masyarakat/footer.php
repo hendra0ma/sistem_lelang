@@ -41,7 +41,42 @@
 <script src="<?= base_url('public/assets/dashboard/datatables/js/datatables.js') ?>"></script>
 </body>
 
+<script>
+    const formatter = new Intl.NumberFormat('IDN', {
+        // style: 'currency',
+        // currency: 'RP',
+        // minimumFractionDigits: 2
+    })
+    for (let i = 0; i < $('.formatHarga').length; i++) {
+        $(".formatHarga")[i].innerHTML = formatter.format($('.formatHarga')[i].innerHTML);
+    }
 
+    const tanggal = $('.formatTanggal');
+    for (let i = 0; i <= tanggal.length; i++) {
+        let pecah = tanggal[i].innerHTML.split("-");
+        let gabung = pecah[2] + "-" + pecah[1] + "-" + pecah[0];
+        tanggal[i].innerHTML = gabung;
+    }
+    $(document).ready(function() {
+
+        let button = $('.btn.btn-outline-light.cari');
+        button.on('click', function() {
+            // console.log($('#keyword').val());
+            $.ajax({
+                url: "<?= base_url() ?>dashboard/masyarakat/home/caribarang",
+                data: {
+                    "keyword": $('#keyword').val(),
+                },
+
+                type: "post",
+                success: function(data) {
+                    $('div.row.value-ajax').html(data);
+                    // console.log(data);
+                }
+            });
+        });
+    });
+</script>
 <script>
     $(document).ready(function() {
         $('.table.table_datatable').DataTable();

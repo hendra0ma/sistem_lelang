@@ -50,11 +50,11 @@
                                         Lihat Gambar
                                     </a>
                                 </td>
-                                <td><?= $data->tgl_lelang ?></td>
+                                <td class="formatTanggal"><?= $data->tgl_lelang ?></td>
                                 <td><?= $data->username ?></td>
                                 <td><?= $data->telp ?></td>
-                                <td><?= $data->harga_awal ?></td>
-                                <td><?= $data->harga_akhir ?></td>
+                                <td class="formatHarga"><?= $data->harga_awal ?></td>
+                                <td class="formatHarga"><?= $data->harga_akhir + $data->kelipatan ?></td>
                                 <td><?= $data->status ?></td>
                             </tr>
                         <?php endforeach; ?>

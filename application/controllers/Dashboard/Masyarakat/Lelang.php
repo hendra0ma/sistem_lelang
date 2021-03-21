@@ -182,6 +182,7 @@ class Lelang extends CI_Controller
     public function penawaran()
     {
         $data['barang'] = $this->Lelang_model->getLelangByIdLanding($this->input->post('id'));
+        $this->data['title'] = "Penawaran";
         $this->form_validation->set_rules(
             'harga_penawaran',
             'harga penawaran',
@@ -192,14 +193,14 @@ class Lelang extends CI_Controller
         );
         if ($this->form_validation->run() == FALSE) {
             $this->data['title'] = "checkout Lelang";
-
-            $this->load->view('landing_pages/templates/header');
+            $this->load->view('dashboard/templates/masyarakat/header', $this->data);
             $this->load->view('landing_pages/home/checkout', $data);
-            $this->load->view('landing_pages/templates/footer');
+            $this->load->view('dashboard/templates/masyarakat/footer');
         } else {
-            if ($this->input->post('harga_penawaran') <= $data['barang']->harga_akhir) {
-                $this->session->set_flashdata('message', 'Penawaran harus lebih tinggi dari harga akhir');
-                redirect('landingpages/home/show/' . $this->input->post('id'));
+            $userKelipatan = $this->input->post('harga_penawaran') - $data['barang']->harga_akhir;
+            if ($data['barang']->kelipatan > $userKelipatan) {
+                $this->session->set_flashdata('message', 'Penawaran harus lebih tinggi dari harga akhir dan harus sesuai dengan kelipatan');
+                redirect('dashboard/masyarakat/home/show/' . $this->input->post('id'));
             } else {
 
                 $dataLelang =  [
@@ -208,7 +209,7 @@ class Lelang extends CI_Controller
                 ];
                 $this->Lelang_model->update($this->input->post('id'), $dataLelang);
                 $this->session->set_flashdata('message', 'Anda Berhasil Menawar barang ini , tunggu sampai lelang selesai ya.. , jika anda memengkan lelang akan ada pengumuman di halaman dashboard , terima kasih');
-                redirect('landingpages/home/show/' . $this->input->post('id'));
+                redirect('dashboard/masyarakat/home/show/' . $this->input->post('id'));
             }
         }
     }

@@ -59,14 +59,27 @@
                         </label>
                     </div> -->
 
-                <div class="container-login100-form-btn">
-                    <button type="submit" class="login100-form-btn">
-                        Login
-                    </button>
-                    <a href="<?= base_url() ?>auth/auth/register" class="login100-form-btn ml-3">
-                        register
-                    </a>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-10 mb-3">
+                        <button type="submit" class="btn btn-light btn-lg btn-block btn-hover" style="border-radius:30px;">
+                            Login
+                        </button>
+                    </div>
+                    <div class="col-md-10">
+                        <center>
+
+                            Belum Punya akun ?
+
+                            <a href="<?= base_url() ?>auth/auth/register" class="text-light">
+                                Buat Baru
+                            </a>
+                        </center>
+
+                    </div>
                 </div>
+
+
 
 
                 <!-- <div class="text-center p-t-90">
