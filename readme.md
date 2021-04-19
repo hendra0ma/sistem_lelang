@@ -10,4 +10,4 @@
  - jangan lupa konfigurasi nama database terlebih dahulu
  - jalankan menggunakan xampp
 
-##Selamat mencoba
+## Selamat mencoba
